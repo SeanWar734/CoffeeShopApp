@@ -15,6 +15,7 @@ public class coffeeController {
 	
 	@Autowired
 	private ProductsDao productsdao;
+	@Autowired
 	private UsersDao usersdao;
 
 	@RequestMapping("/")
