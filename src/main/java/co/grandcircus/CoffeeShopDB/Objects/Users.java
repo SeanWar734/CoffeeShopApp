@@ -6,10 +6,10 @@ public class Users {
 	String first_name;
 	String last_name;
 	String email;
-	Integer phone_number;
+	String phone_number;
 	String password;
 	
-	public Users(String first_name, String last_name, String email, Integer phone_number, String password) {
+	public Users(String first_name, String last_name, String email, String phone_number, String password) {
 		super();
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -46,11 +46,11 @@ public class Users {
 		this.email = email;
 	}
 
-	public Integer getPhone_number() {
+	public String getPhone_number() {
 		return phone_number;
 	}
 
-	public void setPhone_number(Integer phone_number) {
+	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
 

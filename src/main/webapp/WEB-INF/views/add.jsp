@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1></h1>
-	<form method="post" action="/confirm">
+	<form action="/confirm">
 		<fieldset>
 			<legend>Contact Information</legend>
 			<p>
@@ -23,7 +23,7 @@
 				Email: <input type="email" name="email" />
 			</p>
 			<p>
-				Phone Number: <input type="number" name="phone-number" />
+				Phone Number: <input type="text" name="phone_number" />
 			</p>
 			<p>
 				Password: <input type="password" name="password" />
