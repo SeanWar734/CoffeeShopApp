@@ -10,4 +10,4 @@ public class CoffeeShopDbApplication {
 		SpringApplication.run(CoffeeShopDbApplication.class, args);
 	}
 
-}
+} 

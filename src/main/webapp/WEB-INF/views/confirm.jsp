@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Are you sure about that</title>
+<title>User Added!</title>
 </head>
 <body>
 	
@@ -14,8 +14,8 @@
 	<p>Phone Number: ${phone_number}</p>
 	<p>Password: ${password}</p>
 	<div>
-	<a href="/">Yes</a>
-	<a href="/add">No</a>
+	<a href="/">Home</a>
+	<a href="/add">Another User</a>
 	</div>
 </body>
 </html>
