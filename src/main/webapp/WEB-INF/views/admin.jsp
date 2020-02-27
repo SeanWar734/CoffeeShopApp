@@ -4,7 +4,13 @@
 
 <!DOCTYPE html>
 <html>
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT" crossorigin="anonymous">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT"
+	crossorigin="anonymous">
+<link href="/style.css" rel="stylesheet" />
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Page</title>
@@ -26,16 +32,24 @@
 					<tr>
 						<td>${product.name}</td>
 						<td>${product.description}</td>
-						<td>${product.price}</td>
+						<td>$ ${product.price}</td>
 						<td>${product.quantity}</td>
 						<td><a href="/product/update?id=${product.id}">Edit</a></td>
-						<td><a href="/product/delete?id=${product.id}">Delete</a></td>						
+						<td><a href="/product/delete?id=${product.id}" onclick="myFunction()">Delete</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="/addItem" class="btn btn-secondary">Add Item</a>
-		<a href="/" class="btn btn-secondary">Quit Out of Admin</a>
+		<a href="/addItem" class="btn btn-secondary">Add Item</a> <a href="/"
+			class="btn btn-secondary">Quit Out of Admin</a> <a href="/users"
+			class="btn btn-secondary">View User Database</a>
 	</div>
+	
+<script>
+	function myFunction() {
+		  var r = result.confirm("Are you sure?");
+		}
+</script>
 </body>
 </html>

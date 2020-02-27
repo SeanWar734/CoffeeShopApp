@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT" crossorigin="anonymous">
-
+<link href="/style.css" rel="stylesheet" /> 
 <head>
 <meta charset="ISO-8859-1">
 <title>EDIT IT</title>
@@ -23,8 +23,8 @@
 				<label for="name">Name</label>
 				<input class="form-control" id="name" name="name" value="${product.name}" required minlength="2" autocomplete="off">
 			</div>
-			
-			
+
+
 			<div class="form-group">
 				<label for="description">Description</label> 
 				<input class="form-control" id="description" name="description" value="${product.description}" required>

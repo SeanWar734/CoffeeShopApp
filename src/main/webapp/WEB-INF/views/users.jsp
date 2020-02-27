@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -30,61 +29,39 @@
 	rel="stylesheet"
 	integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT"
 	crossorigin="anonymous">
-<link href="/style.css" rel="stylesheet" />
+<link href="/style.css" rel="stylesheet" /> 
 
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome to the Coffee Shop</title>
+<title>User Info</title>
 </head>
 <body>
 	<div class=container>
-		<h1>Welcome to the Coffee Shop</h1>
-		<c:if test="${preference ne null}">
-			<h1>Current Favorite is ${preference.getName()}</h1>
-		</c:if>
+		<h1>User Information</h1>
 		<table>
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Description</th>
-					<th>Price</th>
-					<th>Quantity</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Phone Number</th>
+					<th>Password</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="product" items="${products}">
+				<c:forEach var="user" items="${users}">
 					<tr>
-
-						<td>${product.name}</td>
-						<td>${product.description}</td>
-						<td>${product.price}</td>
-						<td>${product.quantity}</td>
-						<td><form action="" method="post">
-								<input type="hidden" name="preference" value=${product}>
-								<input type="hidden" name="name" value=${product.name}>
-								<input type="hidden" name="description" value=${product.description}> 
-								<input type="hidden" name="price" value=${product.price}> 
-								<input type="hidden" name="quantity" value=${product.quantity}>
-								<button type="submit">This is the BEST</button>
-							</form></td>
+						<td>${user.first_name}</td>
+						<td>${user.last_name}</td>
+						<td>${user.email}</td>
+						<td>${user.phone_number}</td>
+						<td>*i'm not tellin*</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		
-		<form action="/add">
-			<button type="submit" class="btn btn-secondary">Create Account</button>
-		</form>
-		
-		<form action="/admin">
-			<button type="submit" class="btn btn-secondary">Admin Page</button>
-		</form>
-		
-		<form action="/clear" method="post">
-			<input type="hidden" name="preference" value=${preference}>
-			<button type="submit" class="btn btn-secondary">Clear Favorite</button>
-		</form>
-		
+		<a href="/admin" class="btn btn-secondary">Leave</a>
+
 	</div>
 </body>
 </html>

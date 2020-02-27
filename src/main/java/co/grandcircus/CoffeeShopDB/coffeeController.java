@@ -2,16 +2,20 @@ package co.grandcircus.CoffeeShopDB;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.CoffeeShopDB.Dao.ProductsRepository;
 import co.grandcircus.CoffeeShopDB.Dao.UsersDao;
 import co.grandcircus.CoffeeShopDB.Objects.Products;
+import co.grandcircus.CoffeeShopDB.Objects.UserPreference;
 import co.grandcircus.CoffeeShopDB.Objects.Users;
 
 @Controller
@@ -21,17 +25,43 @@ public class coffeeController {
 	private ProductsRepository productsdao;
 	@Autowired
 	private UsersDao usersdao;
+	@Autowired
+	private HttpSession sesh;
 
 	@RequestMapping("/")
-	public ModelAndView index() {
+	public ModelAndView index(@SessionAttribute(name = "preference", required = false) UserPreference userPref) {
 		List<Products> listOfProducts = productsdao.findAll();
-		return new ModelAndView("index", "products", listOfProducts);
+		ModelAndView mav = new ModelAndView("index");
+
+		if (userPref != null) {
+			mav.addObject("preference", userPref);
+		}
+		mav.addObject("products", listOfProducts);
+		return mav;
+	}
+
+	@PostMapping("/")
+	public ModelAndView saveSession(UserPreference pref) {
+		sesh.setAttribute("preference", pref);
+		return new ModelAndView("redirect:/");
+	}
+	
+	@PostMapping("/clear")
+	public ModelAndView clearSession(UserPreference pref) {
+		sesh.setAttribute("preference", null);
+		return new ModelAndView("redirect:/");
 	}
 
 	@RequestMapping("/admin")
 	public ModelAndView admin() {
 		List<Products> listOfProducts1 = productsdao.findAll();
 		return new ModelAndView("admin", "products", listOfProducts1);
+	}
+
+	@RequestMapping("/users")
+	public ModelAndView users() {
+		List<Users> listOfUsers = usersdao.findAll();
+		return new ModelAndView("users", "users", listOfUsers);
 	}
 
 	@RequestMapping("/add")
@@ -56,7 +86,7 @@ public class coffeeController {
 		productsdao.save(product);
 		return new ModelAndView("redirect:/admin");
 	}
-	
+
 	@PostMapping("/product/add")
 	public ModelAndView submitAddForm(Products product) {
 		productsdao.save(product);
@@ -81,7 +111,7 @@ public class coffeeController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping("/product/delete")
 	public ModelAndView delete(@RequestParam("id") Long id) {
 		productsdao.deleteById(id);
